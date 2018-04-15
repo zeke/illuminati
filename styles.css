@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+#wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.theme0 {
+}
+
+.theme1 {
+  filter: grayscale(1);
+}
+
+.theme2 {
+  filter: grayscale(1) saturate(1) contrast(3);
+}
+
+.theme3 {
+  filter: saturate(3) contrast(3);
+}
