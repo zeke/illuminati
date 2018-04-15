@@ -1,4 +1,6 @@
 .env
 .npmrc
 coverage
+dist
 node_modules
+

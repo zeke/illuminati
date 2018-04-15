@@ -1,19 +1,29 @@
 {
-  "name": "webcam-on-top",
-  "description": "A resizable webcam window that float above all other windows",
+  "name": "illuminati",
+  "private": true,
+  "productName": "Illuminati",
+  "description": "A webcam window that floats above all others",
   "version": "1.0.0",
   "main": "main.js",
   "license": "MIT",
   "devDependencies": {
+    "codesign": "^0.0.9",
+    "create-dmg": "^2.0.0",
     "electron": "^2.0.0-beta.7",
+    "electron-installer-zip": "^0.1.2",
+    "electron-packager": "^12.0.1",
+    "gh-release": "^3.2.0",
     "jest": "^22.4.3",
+    "png-to-ico": "^1.0.7",
     "standard": "^11.0.1",
     "standard-markdown": "^4.0.2"
   },
   "scripts": {
     "test": "jest && standard --fix && standard-markdown",
     "watch": "jest --watch --notify --notifyMode=change --coverage",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "./script/build.sh",
+    "release": "gh-release --assets dist/illuminati.dmg,dist/illuminati-mac.zip"
   },
   "standard": {
     "env": [
