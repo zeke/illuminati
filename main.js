@@ -33,11 +33,13 @@ app.on('ready', () => {
 
   win.loadURL('file://' + path.join(__dirname, 'index.html'))
 
-  elemon({
-    app: app,
-    mainFile: 'main.js',
-    bws: [
-      {bw: win, res: []}
-    ]
-  })
+  if (isDev) {
+    elemon({
+      app: app,
+      mainFile: 'main.js',
+      bws: [
+        {bw: win, res: []}
+      ]
+    })
+  }
 })

@@ -4,6 +4,7 @@
   "productName": "Illuminati",
   "description": "A webcam window that floats above all others",
   "version": "1.0.0",
+  "version_build": "1.0.2",
   "main": "main.js",
   "license": "MIT",
   "devDependencies": {
@@ -23,6 +24,7 @@
     "watch": "jest --watch --notify --notifyMode=change --coverage",
     "start": "electron .",
     "build": "./script/build.sh",
+    "postbuild": "open dist/Illuminati-darwin-x64/Illuminati.app",
     "release": "gh-release --assets dist/illuminati.dmg,dist/illuminati-mac.zip"
   },
   "standard": {
