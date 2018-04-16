@@ -1,10 +1,14 @@
-const Store = require('electron-store')
-const store = new Store()
+const store = new (require('electron-store'))()
 const mousetrap = require('mousetrap')
 
 navigator.mediaDevices.getUserMedia({video: true})
   .then(function (stream) {
-    document.getElementById('camera').src = URL.createObjectURL(stream)
+    console.log('ready')
+    const $camera = document.getElementById('camera')
+    $camera.src = URL.createObjectURL(stream)
+    $camera.addEventListener('loadeddata', () => {
+      $camera.classList.remove('hidden')
+    })
   }).catch(function (err) {
     alert('could not connect to camera stream: ' + err.message)
     console.error('could not connect to camera stream', err)

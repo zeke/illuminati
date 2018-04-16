@@ -3,19 +3,37 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: black;
+  background: #F2F2F2;
+  position: relative;
 }
 
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+}
 #wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
 }
 
-video {
+#camera {
   height: 100%;
   width: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+#camera.hidden {
+  opacity: 0;
 }
 
 .theme0 {
