@@ -8,11 +8,11 @@
   "main": "main.js",
   "license": "MIT",
   "devDependencies": {
-    "codesign": "^0.0.9",
     "create-dmg": "^2.0.0",
     "electron": "^2.0.0-beta.7",
     "electron-installer-zip": "^0.1.2",
     "electron-packager": "^12.0.1",
+    "elemon": "^5.0.3",
     "gh-release": "^3.2.0",
     "jest": "^22.4.3",
     "png-to-ico": "^1.0.7",
@@ -38,7 +38,6 @@
     "electron-is-dev": "^0.3.0",
     "electron-store": "^1.3.0",
     "electron-window-state": "^4.1.1",
-    "elemon": "^5.0.3",
     "mousetrap": "^1.6.1"
   }
 }

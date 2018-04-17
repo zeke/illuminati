@@ -22,7 +22,6 @@ electron-packager . \
   --platform=mas \
   --arch=x64 \
   --out=dist \
-  --prune=true \
   --app-bundle-id=com.sikelianos.zeke.illuminati \
   --app-version="$npm_package_version" \
   --build-version="$npm_package_version_build" \
