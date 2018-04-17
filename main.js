@@ -3,7 +3,6 @@ require('electron-debug')
 const {app, BrowserWindow} = require('electron')
 const windowStateKeeper = require('electron-window-state')
 const isDev = require('electron-is-dev')
-const elemon = require('elemon')
 const path = require('path')
 let win
 
@@ -34,7 +33,7 @@ app.on('ready', () => {
   win.loadURL('file://' + path.join(__dirname, 'index.html'))
 
   if (isDev) {
-    elemon({
+    require('elemon')({
       app: app,
       mainFile: 'main.js',
       bws: [
