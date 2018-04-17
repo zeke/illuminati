@@ -4,7 +4,7 @@
   "productName": "Illuminati",
   "description": "A webcam window that floats above all others",
   "version": "1.0.0",
-  "version_build": "1.0.2",
+  "build": "1.0.3",
   "main": "main.js",
   "license": "MIT",
   "devDependencies": {
