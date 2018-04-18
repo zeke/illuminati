@@ -1,3 +1,5 @@
+const yo = require('yo-yo')
+const {format} = require('util')
 const store = new (require('electron-store'))()
 const mousetrap = require('mousetrap')
 
@@ -14,22 +16,43 @@ navigator.mediaDevices.getUserMedia({video: true})
     console.error('could not connect to camera stream', err)
   })
 
-const theme = {
-  id: store.get('themeId', 0),
-  count: 4,
-  next: () => {
-    document.querySelector('#camera').classList.remove(`theme${theme.id}`)
-    theme.id = theme.id === theme.count-1 ? 0 : theme.id + 1
-    theme.apply()
-  },
+document.addEventListener('DOMContentLoaded', () => {
+  // mousetrap.bind('space', theme.next)
+  drawFilters()
+})
 
-  apply: () => {
-    document.querySelector('#camera').classList.add(`theme${theme.id}`)
-    store.set('themeId', theme.id)
+function drawFilters() {
+  const filters = [
+    // 'blur',
+    'brightness', 
+    'contrast',
+    // 'hue-rotate',
+    // 'invert',
+    // 'opacity',
+    // 'saturate',
+    // 'sepia'
+  ]
+
+  const onchange = function (event) {
+    const filterString = filters.map(filter => {
+      return format('%s(%s)', filter, document.getElementById(filter).value)
+    }).join(' ')
+    console.log(filterString)
+    document.querySelector('#camera').style.filter = filterString
   }
+
+  const el = yo`<form>
+    ${filters.map(function (filter) {
+      return yo`
+        <div class="input">
+          <label for="${filter}">${filter}</label>
+          <input id="${filter}" onchange="${onchange}" type="range" min="1" max="10" step="1" value="1">
+        </div>
+        `
+    })}
+  </form>`
+
+  document.querySelector('#wrapper').appendChild(el)
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  mousetrap.bind('space', theme.next)
-  theme.apply()
-})
+

@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   background: #F2F2F2;
   position: relative;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
 #loader {
@@ -15,6 +16,7 @@ html, body {
   width: 200px;
   height: 200px;
 }
+
 #wrapper {
   position: absolute;
   top: 0;
@@ -24,6 +26,8 @@ html, body {
 }
 
 #camera {
+  -webkit-app-region: drag;
+  cursor: -webkit-grab;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -36,17 +40,31 @@ html, body {
   opacity: 0;
 }
 
-.theme0 {
+form {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  /* height: 60%; */
+  width: 50%;
+  background: #F2F2F2;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  
 }
 
-.theme1 {
-  filter: grayscale(1);
+div.input {
+  padding: .7rem 0;
+  border-bottom: 1px solid #ccc;
 }
 
-.theme2 {
-  filter: grayscale(1) saturate(1) contrast(3);
+div.input:last-child {
+  border-bottom: none;
+}
+label {
+  display: inline-block;
+  width: 30%;
 }
 
-.theme3 {
-  filter: saturate(3) contrast(3);
+input[type="range"] {
+  width: 60%;
 }
