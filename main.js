@@ -20,7 +20,8 @@ app.on('ready', () => {
     width: windowState.width,
     height: windowState.height,
     alwaysOnTop: true,
-    frame: false,
+    titleBarStyle: 'hiddenInset',
+    // frame: false,
     show: false
   })
 
