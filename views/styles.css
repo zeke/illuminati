@@ -84,8 +84,8 @@ div.input.range input {
 
 div.input.range label {
   float: left;
-  width: calc(28% - 20px);
-  padding-left: 20px;
+  width: calc(30% - 24px);
+  padding-left: 24px;
 }
 
 div.input:last-child {

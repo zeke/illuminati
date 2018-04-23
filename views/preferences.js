@@ -1,4 +1,4 @@
-const yo = require('nanohtml')
+const html = require('nanohtml')
 const store = require('../lib/store')
 const isNumber = require('is-number')
 const inputs = require('../lib/inputs')
@@ -42,7 +42,7 @@ function render() {
     const value = store.get(`preferences.${id}`, defaultValue)
     switch (type) {
       case 'checkbox':
-        return yo`
+        return html`
         <div class="input ${type}">
           <input 
             onchange="${onchange}"
@@ -55,7 +55,7 @@ function render() {
         </div>`
         break
       case 'range':
-      return yo`
+      return html`
       <div class="input ${type}">
         <input 
           onchange="${onchange}"
@@ -74,7 +74,7 @@ function render() {
 
   })
 
-  const $form = yo`<form>${$inputs}</form>`
+  const $form = html`<form>${$inputs}</form>`
   document.querySelector('body').appendChild($form)
 }
 
