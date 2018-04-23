@@ -4,45 +4,44 @@ rm -rf dist
 mkdir dist
 
 # create icons
-nicns --in build/icon.png --out build/icon.icns
-png-to-ico build/icon.png > build/icon.ico
+nicns --in build/icon.png --out dist/icon.icns
+png-to-ico build/icon.png > dist/icon.ico
 
-
-# package for mac
+# package for macOS
 electron-packager . \
-  --platform=darwin \
-  --arch=x64 \
-  --out=dist \
   --app-bundle-id=com.sikelianos.zeke.illuminati \
-  --icon=build/icon.icns \
-  --osx-sign
-
-# package for MAS
-electron-packager . \
-  --platform=mas \
   --arch=x64 \
+  --icon=dist/icon.icns \
   --out=dist \
+  --platform=darwin 
+
+# sign macOS build
+DEBUG=electron-osx-sign* electron-osx-sign \
+  dist/Illuminati-osx-x64/Illuminati.app
+
+# package for mas
+electron-packager . \
   --app-bundle-id=com.sikelianos.zeke.illuminati \
   --app-version="$npm_package_version" \
+  --arch=x64 \
   --build-version="$npm_package_build" \
-  --icon=build/icon.icns \
-  --osx-sign
+  --extend-info=build/info.plist \
+  --icon=dist/icon.icns \
+  --out=dist \
+  --platform=mas
 
-# copy provision profile
-cp embedded.provisionprofile dist/Illuminati-mas-x64/Illuminati.app/Contents/
+# sign mas build
+DEBUG=electron-osx-sign* electron-osx-sign \
+  dist/Illuminati-mas-x64/Illuminati.app \
+  --provisioning-profile=build/embedded.provisionfile
 
-# sign
-# codesign --deep --force --verbose --sign - dist/Illuminati-darwin-x64/Illuminati.app
-codesign --deep --force --verbose dist/Illuminati-darwin-x64/Illuminati.app
-codesign --deep --force --verbose dist/Illuminati-mas-x64/Illuminati.app
-
-electron-osx-flat dist/Illuminati-mas-x64/Illuminati.app \
+# flatten mas build
+DEBUG=electron-osx-flat* electron-osx-flat dist/Illuminati-mas-x64/Illuminati.app \
   --pkg dist/illuminati.pkg
 
-
-# create zip
+# create mac zip (for auto-updater)
 # electron-installer-zip dist/Illuminati-darwin-x64 dist/illuminati-mac.zip
 
-#create dmg
+# create mac dmg
 # create-dmg dist/Illuminati-darwin-x64/Illuminati.app
 # mv "Illuminati-$npm_package_version.dmg" dist/illuminati.dmg

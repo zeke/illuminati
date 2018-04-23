@@ -1,8 +1,8 @@
 {
   "name": "illuminati",
-  "private": true,
   "productName": "Illuminati",
-  "description": "A webcam window that floats above all others",
+  "private": true,
+  "description": "An elegant webcam that floats above all other windows",
   "version": "1.0.0",
   "build": "1.0.3",
   "main": "main.js",
@@ -14,14 +14,12 @@
     "electron-packager": "^12.0.1",
     "elemon": "^5.0.3",
     "gh-release": "^3.2.0",
-    "jest": "^22.4.3",
     "png-to-ico": "^1.0.7",
     "standard": "^11.0.1",
     "standard-markdown": "^4.0.2"
   },
   "scripts": {
-    "test": "jest && standard --fix && standard-markdown",
-    "watch": "jest --watch --notify --notifyMode=change --coverage",
+    "test": "standard --fix && standard-markdown",
     "start": "electron .",
     "build": "./script/build.sh",
     "postbuild": "open dist/Illuminati-darwin-x64/Illuminati.app",
@@ -29,16 +27,17 @@
   },
   "standard": {
     "env": [
-      "browser",
-      "jest"
+      "browser"
     ]
   },
   "dependencies": {
     "electron-debug": "^1.5.0",
     "electron-is-dev": "^0.3.0",
     "electron-store": "^1.3.0",
+    "electron-util": "^0.8.1",
     "electron-window-state": "^4.1.1",
-    "mousetrap": "^1.6.1",
-    "yo-yo": "^1.4.1"
+    "is-number": "^6.0.0",
+    "nanohtml": "^1.2.3",
+    "require-dir": "^1.0.0"
   }
 }
