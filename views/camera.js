@@ -29,9 +29,9 @@ window.updateCamera = () => {
     return
   }
   console.log(prefs)
-  const filterString = filters
+  const cssFilterString = filters
     .map(f => format('%s(%s)', f, prefs[f]))
     .join(' ')
-  console.log(filterString)
-  document.querySelector('#camera').style.filter = filterString
+  console.log(cssFilterString)
+  document.querySelector('#camera').style.filter = cssFilterString
 }
