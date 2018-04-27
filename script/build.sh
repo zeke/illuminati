@@ -17,7 +17,7 @@ electron-packager . \
 
 # sign macOS build
 DEBUG=electron-osx-sign* electron-osx-sign \
-  dist/Illuminati-osx-x64/Illuminati.app
+  dist/Illuminati-darwin-x64/Illuminati.app
 
 # package for mas
 electron-packager . \
