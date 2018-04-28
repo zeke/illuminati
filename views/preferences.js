@@ -2,15 +2,9 @@ const html = require('nanohtml')
 const store = require('../lib/store')
 const isNumber = require('is-number')
 const inputs = require('../lib/inputs')
-// store.clear()
 
 document.addEventListener('DOMContentLoaded', () => {
   render()
-
-  // console.log(store.get('preferences'))
-  store.onDidChange('preferences', (newValue, oldValue) => {
-    // console.log('new prefs', newValue)
-  })
 })
 
 const onchange = function (event) {

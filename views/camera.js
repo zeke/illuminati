@@ -1,8 +1,7 @@
 const store = require('../lib/store')
 const {format} = require('util')
-const filters = require('../lib/inputs')
-  .filter(input => input.type === 'range')
-  .map(input => input.id)
+const inputs = require('../lib/inputs')
+const rangeInputs = inputs.filter(input => input.type === 'range')
 
 navigator.mediaDevices.getUserMedia({video: true})
   .then(function (stream) {
@@ -28,9 +27,11 @@ window.updateCamera = () => {
     console.log('no preferences set yet')
     return
   }
-  console.log(prefs)
-  const cssFilterString = filters
-    .map(f => format('%s(%s)', f, prefs[f]))
+  // console.log(prefs)
+  
+  const cssFilterString = rangeInputs
+    // examples: brightness(4), hue-rotate(270deg)
+    .map(({id, unit=''}) => format('%s(%s%s)', id, prefs[id], unit)) 
     .join(' ')
   console.log(cssFilterString)
   document.querySelector('#camera').style.filter = cssFilterString
