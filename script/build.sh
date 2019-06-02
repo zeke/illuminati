@@ -4,7 +4,7 @@ rm -rf dist
 mkdir dist
 
 # create icons
-nicns --in build/icon.png --out dist/icon.icns
+png2icons build/icon.png dist/icon -icns
 png-to-ico build/icon.png > dist/icon.ico
 
 # package for macOS
