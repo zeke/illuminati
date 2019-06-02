@@ -16,7 +16,10 @@ module.exports = function createWindow () {
     height: windowState.height,
     alwaysOnTop: true,
     titleBarStyle: 'hiddenInset',
-    show: false
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   
   win.once('ready-to-show', () => {

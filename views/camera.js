@@ -6,7 +6,7 @@ const rangeInputs = inputs.filter(input => input.type === 'range')
 navigator.mediaDevices.getUserMedia({video: true})
   .then(function (stream) {
     const $camera = document.getElementById('camera')
-    $camera.src = URL.createObjectURL(stream)
+    $camera.srcObject = stream
     
     // fade in with CSS to prevent camera flashing on screen
     $camera.addEventListener('loadeddata', () => {

@@ -14,7 +14,10 @@ module.exports = function preferences () {
     width: 1000,
     height: 500,
     alwaysOnTop: true,
-    show: false
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   
   win.once('ready-to-show', () => {

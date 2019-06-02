@@ -8,30 +8,12 @@
   "build": "1.0.3",
   "main": "main.js",
   "license": "MIT",
-  "devDependencies": {
-    "create-dmg": "^2.0.0",
-    "electron": "^2.0.0-beta.7",
-    "electron-installer-zip": "^0.1.2",
-    "electron-packager": "^12.0.1",
-    "elemon": "^5.0.3",
-    "gh-release": "^3.2.0",
-    "png-to-ico": "^1.0.7",
-    "png2icons": "^1.0.1",
-    "standard": "^11.0.1",
-    "standard-markdown": "^4.0.2",
-    "update-electron-app": "^1.3.0"
-  },
   "scripts": {
     "test": "standard --fix && standard-markdown",
     "start": "electron .",
     "build": "./script/build.sh",
     "postbuild": "open dist/Illuminati-darwin-x64/Illuminati.app",
     "release": "gh-release --assets dist/illuminati.dmg,dist/illuminati-mac.zip"
-  },
-  "standard": {
-    "env": [
-      "browser"
-    ]
   },
   "dependencies": {
     "electron-debug": "^1.5.0",
@@ -42,5 +24,23 @@
     "is-number": "^6.0.0",
     "nanohtml": "^1.2.3",
     "require-directory": "^2.1.1"
+  },
+  "devDependencies": {
+    "create-dmg": "^2.0.0",
+    "electron": "^5.0.2",
+    "electron-installer-zip": "^0.1.2",
+    "electron-packager": "^12.0.1",
+    "elemon": "^5.0.3",
+    "gh-release": "^3.2.0",
+    "png-to-ico": "^1.0.7",
+    "png2icons": "^1.0.1",
+    "standard": "^11.0.1",
+    "standard-markdown": "^4.0.2",
+    "update-electron-app": "^1.3.0"
+  },
+  "standard": {
+    "env": [
+      "browser"
+    ]
   }
 }
