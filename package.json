@@ -13,7 +13,8 @@
     "start": "electron .",
     "build": "./script/build.sh",
     "postbuild": "open dist/Illuminati-darwin-x64/Illuminati.app",
-    "release": "gh-release --assets dist/illuminati.dmg,dist/illuminati-mac.zip"
+    "release": "gh-release --assets dist/illuminati.dmg,dist/illuminati-mac.zip",
+    "lint": "standard --fix"
   },
   "dependencies": {
     "electron-debug": "^1.5.0",

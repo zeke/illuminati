@@ -17,11 +17,10 @@ const onchange = function (event) {
     .reduce((acc, input) => {
       const {id, type, defaultValue} = input
       if (type === 'checkbox') {
-        acc[id] = formData.has(id) ? true : false
+        acc[id] = !!formData.has(id)
       } else if (type === 'number' || type === 'range') {
         acc[id] = Number(formData.get(id))
-      }
-        else {
+      } else {
         acc[id] = formData.get(id)
       }
       return acc
@@ -30,7 +29,7 @@ const onchange = function (event) {
   store.set('preferences', newPrefs)
 }
 
-function render() {
+function render () {
   const $inputs = inputs.map(input => {
     const {id, label, type, defaultValue, min, max, step} = input
     const value = store.get(`preferences.${id}`, defaultValue)
@@ -49,7 +48,7 @@ function render() {
         </div>`
         break
       case 'range':
-      return html`
+        return html`
       <div class="input ${type}">
         <input 
           onchange="${onchange}"
@@ -63,12 +62,10 @@ function render() {
         >
         <label for="${id}">${label}</label>
       </div>`
-      break
+        break
     }
-
   })
 
   const $form = html`<form>${$inputs}</form>`
   document.querySelector('body').appendChild($form)
 }
-

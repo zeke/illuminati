@@ -19,7 +19,7 @@ module.exports = function preferences () {
       nodeIntegration: true
     }
   })
-  
+
   win.once('ready-to-show', () => {
     win.show()
     win.webContents.openDevTools()
@@ -28,8 +28,8 @@ module.exports = function preferences () {
   win.on('closed', () => {
     win = null
   })
-  
-  win.loadURL('file://' + path.join(__dirname, '../views/preferences.html'))  
+
+  win.loadURL('file://' + path.join(__dirname, '../views/preferences.html'))
 
   return win
 }

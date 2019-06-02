@@ -7,7 +7,7 @@ navigator.mediaDevices.getUserMedia({video: true})
   .then(function (stream) {
     const $camera = document.getElementById('camera')
     $camera.srcObject = stream
-    
+
     // fade in with CSS to prevent camera flashing on screen
     $camera.addEventListener('loadeddata', () => {
       $camera.classList.remove('hidden')
@@ -28,10 +28,10 @@ window.updateCamera = () => {
     return
   }
   // console.log(prefs)
-  
+
   const cssFilterString = rangeInputs
     // examples: brightness(4), hue-rotate(270deg)
-    .map(({id, unit=''}) => format('%s(%s%s)', id, prefs[id], unit)) 
+    .map(({id, unit = ''}) => format('%s(%s%s)', id, prefs[id], unit))
     .join(' ')
   console.log(cssFilterString)
   document.querySelector('#camera').style.filter = cssFilterString

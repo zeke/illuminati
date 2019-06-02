@@ -8,7 +8,7 @@ module.exports = function createWindow () {
     defaultWidth: 400,
     defaultHeight: 300
   })
-  
+
   win = new BrowserWindow({
     x: windowState.x,
     y: windowState.y,
@@ -21,7 +21,7 @@ module.exports = function createWindow () {
       nodeIntegration: true
     }
   })
-  
+
   win.once('ready-to-show', () => {
     win.show()
     win.webContents.openDevTools()
@@ -32,8 +32,8 @@ module.exports = function createWindow () {
   })
 
   windowState.manage(win)
-  
-  win.loadURL('file://' + path.join(__dirname, '../views/camera.html'))  
+
+  win.loadURL('file://' + path.join(__dirname, '../views/camera.html'))
 
   return win
 }
