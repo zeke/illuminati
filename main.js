@@ -1,3 +1,5 @@
+require('update-electron-app')()
+
 require('electron-debug')
 const {app} = require('electron')
 const ui = require('./ui')

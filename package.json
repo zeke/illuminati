@@ -2,7 +2,8 @@
   "name": "illuminati",
   "productName": "Illuminati",
   "private": true,
-  "description": "An elegant webcam that floats above all other windows",
+  "description": "A minimalist webcam app for your desktop",
+  "repository": "https://github.com/zeke/illuminati",
   "version": "1.0.0",
   "build": "1.0.3",
   "main": "main.js",
@@ -17,7 +18,8 @@
     "png-to-ico": "^1.0.7",
     "png2icons": "^1.0.1",
     "standard": "^11.0.1",
-    "standard-markdown": "^4.0.2"
+    "standard-markdown": "^4.0.2",
+    "update-electron-app": "^1.3.0"
   },
   "scripts": {
     "test": "standard --fix && standard-markdown",
