@@ -6,6 +6,7 @@ let win
 
 module.exports = function createWindow () {
   const windowState = windowStateKeeper({
+    file: 'camera.json',
     defaultWidth: 400,
     defaultHeight: 300
   })
@@ -25,7 +26,7 @@ module.exports = function createWindow () {
 
   win.once('ready-to-show', () => {
     win.show()
-    if (!app.isPackaged) win.webContents.openDevTools()
+    // if (!app.isPackaged) win.webContents.openDevTools()
   })
 
   win.on('closed', () => {
