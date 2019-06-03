@@ -18,12 +18,14 @@ const onchange = function (event) {
     .sort((a, b) => a.id.localeCompare(b.id))
     .reduce((acc, input) => {
       const {id, type, defaultValue} = input
-      if (type === 'checkbox') {
-        acc[id] = !!formData.has(id)
-      } else if (type === 'number' || type === 'range') {
-        acc[id] = Number(formData.get(id))
-      } else {
-        acc[id] = formData.get(id)
+      switch(type) {
+        case 'checkbox':
+          acc[id] = !!formData.has(id)
+        case 'number':
+        case 'range':
+          acc[id] = Number(formData.get(id))
+        default:
+          acc[id] = formData.get(id)
       }
       return acc
     }, {})
@@ -50,21 +52,33 @@ function render () {
           <label for="${id}">${label}</label>
         </div>`
         break
+      case 'color':
+          return html`
+          <div class="input ${type}">
+            <label for="${id}">${label}</label>
+            <input 
+              onchange="${onchange}"
+              id="${id}" 
+              name="${id}" 
+              type="${type}"  
+              value="${value}"
+            >
+          </div>`
       case 'range':
         return html`
-      <div class="input ${type}">
-        <input 
-          onchange="${onchange}"
-          id="${id}" 
-          name="${id}" 
-          type="${type}"  
-          value="${value}"
-          min="${min}"
-          max="${max}"
-          step="${step}"
-        >
-        <label for="${id}">${label}</label>
-      </div>`
+        <div class="input ${type}">
+          <input 
+            onchange="${onchange}"
+            id="${id}" 
+            name="${id}" 
+            type="${type}"  
+            value="${value}"
+            min="${min}"
+            max="${max}"
+            step="${step}"
+          >
+          <label for="${id}">${label}</label>
+        </div>`
         break
     }
   })

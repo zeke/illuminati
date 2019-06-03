@@ -2,6 +2,7 @@ const store = require('../lib/store')
 const {format} = require('util')
 const inputs = require('../lib/inputs')
 const rangeInputs = inputs.filter(input => input.type === 'range')
+const cameraUpdateInterval = 1000
 
 navigator.mediaDevices.getUserMedia({video: true})
   .then(function (stream) {
@@ -17,8 +18,9 @@ navigator.mediaDevices.getUserMedia({video: true})
     console.error('could not connect to camera stream', err)
   })
 
+// poll for changes to camera preferences
 document.addEventListener('DOMContentLoaded', () => {
-  let timerId = setInterval(() => window.updateCamera(), 1000)
+  let timerId = setInterval(() => window.updateCamera(), cameraUpdateInterval)
 })
 
 window.updateCamera = () => {
@@ -27,7 +29,6 @@ window.updateCamera = () => {
     console.log('no preferences set yet')
     return
   }
-  // console.log(prefs)
 
   const cssFilterString = rangeInputs
     // examples: brightness(4), hue-rotate(270deg)
@@ -35,4 +36,7 @@ window.updateCamera = () => {
     .join(' ')
   console.log(cssFilterString)
   document.querySelector('#camera').style.filter = cssFilterString
+
+  // set background color, which is visible when using opacity
+  document.querySelector('#wrapper').style.backgroundColor = prefs['background-color']
 }
