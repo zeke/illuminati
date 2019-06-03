@@ -1,6 +1,7 @@
 const path = require('path')
 const { app, BrowserWindow } = require('electron')
 const windowStateKeeper = require('electron-window-state')
+const store = require('../lib/store')
 let win
 
 module.exports = function createWindow () {
@@ -14,7 +15,7 @@ module.exports = function createWindow () {
     y: windowState.y,
     width: windowState.width,
     height: windowState.height,
-    alwaysOnTop: true,
+    alwaysOnTop: store.get('preferences.always-on-top'),
     titleBarStyle: 'hiddenInset',
     show: false,
     webPreferences: {

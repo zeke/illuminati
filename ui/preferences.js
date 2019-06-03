@@ -1,4 +1,5 @@
 const path = require('path')
+const store = require('../lib/store')
 let win
 
 module.exports = function preferences () {
@@ -13,7 +14,7 @@ module.exports = function preferences () {
     center: true,
     width: 1000,
     height: 500,
-    alwaysOnTop: true,
+    alwaysOnTop: store.get('preferences.always-on-top'),
     show: false,
     webPreferences: {
       nodeIntegration: true
