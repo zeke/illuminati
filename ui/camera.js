@@ -1,5 +1,5 @@
 const path = require('path')
-const {BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const windowStateKeeper = require('electron-window-state')
 let win
 
@@ -24,7 +24,7 @@ module.exports = function createWindow () {
 
   win.once('ready-to-show', () => {
     win.show()
-    win.webContents.openDevTools()
+    if (!app.isPackaged) win.webContents.openDevTools()
   })
 
   win.on('closed', () => {

@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   render()
 })
 
+// Save preferences whenever the form inputs change
+// 
 const onchange = function (event) {
   event.preventDefault()
   const form = document.querySelector('form')
@@ -27,6 +29,7 @@ const onchange = function (event) {
     }, {})
 
   store.set('preferences', newPrefs)
+  // store.openInEditor()
 }
 
 function render () {

@@ -2,7 +2,7 @@ const path = require('path')
 let win
 
 module.exports = function preferences () {
-  const {BrowserWindow} = require('electron')
+  const {app, BrowserWindow} = require('electron')
 
   if (win) {
     win.show()
@@ -22,7 +22,7 @@ module.exports = function preferences () {
 
   win.once('ready-to-show', () => {
     win.show()
-    win.webContents.openDevTools()
+    if (!app.isPackaged) win.webContents.openDevTools()
   })
 
   win.on('closed', () => {

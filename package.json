@@ -9,7 +9,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "test": "standard --fix && standard-markdown",
+    "test": "standard && standard-markdown",
     "start": "electron .",
     "build": "./script/build.sh",
     "postbuild": "open dist/Illuminati-darwin-x64/Illuminati.app",
